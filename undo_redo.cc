@@ -4,18 +4,16 @@
 undo_stack::undo_stack(int limit)
 {
     if(limit>0)
-    {
         this->limit = limit;
-    }
     else
-    {
-        limit = 0;
-    }
+        this->limit = 0;
 }
 
 string undo_stack::push(string input)
 {
-    string popped_element = "";       //SOLVED -> //ISSUE: handle memory deallocation 
+    if(limit == 0)
+        return input;
+    string popped_element = "";                    //SOLVED -> //ISSUE: handle memory deallocation 
     if(undo_list_buffer.size()>=limit && limit>0)
     {
         popped_element = undo_list_buffer.front();
@@ -28,8 +26,12 @@ string undo_stack::push(string input)
 string undo_stack::reset_undo_count(int limit)
 {
     int old_limit = this->limit;
-    int diff_bw_new_old_sizes = old_limit - limit;
-    if(diff_bw_new_old_sizes>0 && limit>0)
+    if(limit>0)
+        this->limit = limit;
+    else
+        this->limit = 0;
+    int diff_bw_new_old_sizes = old_limit - max(0,limit);
+    if(diff_bw_new_old_sizes>0)
         return clear_undo_buffer(diff_bw_new_old_sizes);
     return "";
 }
