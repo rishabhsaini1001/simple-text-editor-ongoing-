@@ -1,7 +1,7 @@
-||TEXT EDITOR||
-    The project implements undo/redo functionality for code editors.
+||UNDO FOR TEXT EDITOR||
+    The project implements undo/redo functionality for text editors.
 
-    There are two core classes:
+    There are two classes:
         1. main_content (for testing)
         2. undo_redo
     main_content holds the text and contains undo_redo. Undo/redo can be invoked by calls to
