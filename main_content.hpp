@@ -17,7 +17,6 @@ public:
     main_content(bool add_undo_redo = 0,int limit = 10);
     string get();
     void push(string input); 
-    void reset_undo_count(int limit); 
 };
 
 #endif
